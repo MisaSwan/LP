@@ -1,40 +1,35 @@
 /*
- * To change this template, choose Tools | Templates
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
 package edu.mack.entity;
 
-import edu.mack.DAO.ProdutoDAOImpl;
+import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author 31327291
+ * @author Paloma
  */
-public class Produto {
-
-    private String name;
+@XmlRootElement(name = "product")
+public class Product {
+  
+    private Integer productId;
+    private String name;    
     private double price;
     private String description;
-    private String image;
+    private String image;    
     private String category;
-
-    public String getCategory() {
-        return category;
+    
+    public Product() {
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public Integer getProductId() {
+        return productId;
     }
 
-    public Produto(String name, double price, String description, String image) {
-        this.name = name;
-        this.price = price;
-        this.description = description;
-        this.image = image;
-    }
-
-    public Produto() {
-
+    public void setProductId(Integer productId) {
+        this.productId = productId;
     }
 
     public String getName() {
@@ -45,7 +40,7 @@ public class Produto {
         this.name = name;
     }
 
-    public double getPrice() {        
+    public double getPrice() {
         return price;
     }
 
@@ -69,4 +64,11 @@ public class Produto {
         this.image = image;
     }
 
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
+    }  
 }

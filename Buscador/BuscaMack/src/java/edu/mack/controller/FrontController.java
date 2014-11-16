@@ -48,9 +48,6 @@ public class FrontController extends HttpServlet {
             case "searchProduct":
                 cmd = new BuscarProdutoCommand();
                 break;
-            case "loadProduct":
-                cmd = new CarregarProdutoCommand();
-                break;
             default:
                 cmd = null;
                 break;

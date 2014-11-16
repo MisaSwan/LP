@@ -48,17 +48,16 @@
     <body >
         <div data-role="page" id="register" data-theme="b">
             <div data-role="header">
-                <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+                <div data-role="navbar" class="nav-glyphish-example" data-grid="b">
                     <ul>
                         <li><a href="index.jsp" data-transition="flip" id="house" data-icon="custom">Home</a></li>
-                        <li><a href="products.jsp" id="outlet" data-transition="flip" data-icon="custom">Produtos</a></li>
-                        <li><a href="partners.jsp" data-transition="flip" id="beer" data-icon="custom">Parceiros</a></li>        
+                        <li><a href="products.jsp" id="outlet" data-transition="flip" data-icon="custom">Produtos</a></li>                        
                         <li><a href="#login" data-rel="popup" data-transition="flip" data-position-to="window" data-transition="pop" id="person" data-icon="custom">Login</a></li>        
                     </ul>
                 </div>            
             </div>             
             <div data-role="main" class="ui-content">
-                <form method="GET" id="registerForm" action="/ECommerce/FrontController" name="registro" data-ajax="false" autocomplete="off" >
+                <form method="GET" id="registerForm" action="/BuscaMack/FrontController" name="registro" data-ajax="false" autocomplete="off" >
                     <div data-role="fieldcontain" >
                         <label>Nome:</label>
                         <input type="text" name="nameRegister" value="" placeholder="Nome" required="">

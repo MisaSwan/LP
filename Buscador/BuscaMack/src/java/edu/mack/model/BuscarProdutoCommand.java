@@ -4,30 +4,77 @@
  */
 package edu.mack.model;
 
-import edu.mack.DAO.ProdutoDAOImpl;
-import edu.mack.entity.Produto;
+import edu.mack.entity.*;
 import java.io.IOException;
+import java.io.InputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
 
 /**
  *
  * @author 31327291
  */
-public class BuscarProdutoCommand implements Command{
+public class BuscarProdutoCommand implements Command {
 
-    ProdutoDAOImpl produtoDAO;
     @Override
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        produtoDAO = new ProdutoDAOImpl();
-        String category = request.getParameter("category");
-        String price = request.getParameter("FilterPrice");
-        List<Produto> products = produtoDAO.searchProducts(category,price);
-        request.setAttribute("products", products);
-        response.sendRedirect("products.jsp#&loaded");
+
+        List<String> ecommerces = new ArrayList();
+        ecommerces.add("http://localhost:8080/ECommerce/webresources/entities.product");
+        // ecommerces.add("http://localhost:8081/ECommerce/webresources/entities.product");
+        List<Product> productsAll = new ArrayList();
+        for (String uri : ecommerces) {
+            URL url = new URL(uri);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.setRequestProperty("Accept", "application/xml");
+            Products products = null;
+            try {
+                JAXBContext jc = JAXBContext.newInstance(Products.class);
+                InputStream xml = connection.getInputStream();
+
+                products = (Products) jc.createUnmarshaller().unmarshal(xml);
+            } catch (JAXBException ex) {
+                Logger.getLogger(BuscarProdutoCommand.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            for (Product product : products.getProducts()) {
+                productsAll.add(product);
+            }
+            connection.disconnect();
+        }
+        Collections.sort(productsAll, new Comparator<Product>() {
+            @Override
+            public int compare(Product one, Product another) {
+                int returnVal = 0;
+
+                if (one.getPrice() < another.getPrice()) {
+                    returnVal = -1;
+                } else if (one.getPrice() > another.getPrice()) {
+                    returnVal = 1;
+                } else if (one.getPrice() == another.getPrice()) {
+                    returnVal = 0;
+                }
+                return returnVal;
+
+            }
+        });
+        for (Product p : productsAll) {
+            System.out.println(p.getName() + " " + p.getPrice());
+        }
+
+        request.getSession().setAttribute("products", productsAll);
+        response.sendRedirect("products.jsp");
     }
-    
+
 }
