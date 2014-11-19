@@ -52,7 +52,13 @@
 
             <div data-role="main" class="ui-content" >       
                 <br/>
-                <div id='welcome' class="font-effect-emboss">
+                <%if (request.getSession().getAttribute("ErrorLogin") != null) {
+                %>   
+                <div class="alert alert-danger" role="alert" style='width:50%;margin: 0px auto;'><%=request.getSession().getAttribute("ErrorLogin") %></div>
+                <%}
+                request.getSession().setAttribute("ErrorLogin",null);
+                %>
+                <div id='welcome' class="font-effect-emboss">                    
                     <img src='assets/img/searcher.jpg' style="float:left;"/>
                     <h1>Bem vindo!</h1>
                     <h2>Nós encontraremos tudo que você precisa!</h2>
@@ -60,7 +66,7 @@
                 <%if (request.getSession().getAttribute("usuarioLogado") == null) {
                 %>       
                     <h3>Para utilizar os serviços do BuscaMack, por favor faça <a href="#popupLogin" data-rel="popup" data-transition="flip" data-position-to="window">Login</a> ou <a href="register.jsp">Registre-se</a>.</h3>                
-                <!--<div class="alert alert-info" role="alert" style='width:50%;margin: 0px auto;'>Você ainda não está logado! Por favor você precisa estar logado para utilizar o BuscaMack, faça <a href=''>Login</a>  ou <a href=''>Registre-se</a>.  </div>-->
+                
                 <%} else {%>                
                 <br/>
                 <a href="products.jsp" class="ui-btn ui-icon-search ui-btn-icon-top">Buscar</a>                

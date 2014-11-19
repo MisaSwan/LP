@@ -33,7 +33,7 @@ public class LoginUsuarioCommand implements Command {
 
         if (login == null || pass == null) {
             hasError = true;
-            msgError = "Login ou senha inválidos";
+            msgError = "Login ou senha inválidos.";
         }
 
         if (!hasError) {
@@ -49,13 +49,11 @@ public class LoginUsuarioCommand implements Command {
                 response.addCookie(c);                
                 response.sendRedirect("products.jsp");                
             } else {
-                msgError = "Usuario não encontrado";
+                msgError = "Este usuario não foi encontrado, ou a senha está incorreta.";
             }
-        }else
-        {
+        }
          request.getSession().setAttribute("ErrorLogin", msgError);
          response.sendRedirect("index.jsp");
-        }
 
     }
 

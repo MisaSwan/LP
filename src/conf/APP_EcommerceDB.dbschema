@@ -1,22 +1,22 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 
-<OBJECT CLASS="com.sun.forte4j.modules.dbmodel.SchemaElement" ID="org.netbeans.modules.dbschema.SchemaElement-1556667910">
+<OBJECT CLASS="com.sun.forte4j.modules.dbmodel.SchemaElement" ID="org.netbeans.modules.dbschema.SchemaElement558905696">
   <impl>
-    <OBJECT CLASS="com.sun.forte4j.modules.dbmodel.jdbcimpl.SchemaElementImpl" ID="org.netbeans.modules.dbschema.jdbcimpl.SchemaElementImpl548711172">
+    <OBJECT CLASS="com.sun.forte4j.modules.dbmodel.jdbcimpl.SchemaElementImpl" ID="org.netbeans.modules.dbschema.jdbcimpl.SchemaElementImpl1079211">
       <element>
-        <OBJECT REFERENCE="org.netbeans.modules.dbschema.SchemaElement-1556667910"/>
+        <OBJECT REFERENCE="org.netbeans.modules.dbschema.SchemaElement558905696"/>
       </element>
       <_databaseProductVersion>10.8.3.2 - (1557835)</_databaseProductVersion>
       <_username>apd</_username>
       <_name>
-        <OBJECT CLASS="com.sun.forte4j.modules.dbmodel.DBIdentifier" ID="org.netbeans.modules.dbschema.DBIdentifier1732003973">
-          <name>APP_CustomerDB</name>
+        <OBJECT CLASS="com.sun.forte4j.modules.dbmodel.DBIdentifier" ID="org.netbeans.modules.dbschema.DBIdentifier1638482325">
+          <name>APP_EcommerceDB</name>
         </OBJECT>
       </_name>
       <_driverVersion>10.8.3.2 - (1557835)</_driverVersion>
       <_databaseProductName>Apache Derby</_databaseProductName>
       <tables>
-        <OBJECT CLASS="com.sun.forte4j.modules.dbmodel.jdbcimpl.DBElementsCollection" ID="org.netbeans.modules.dbschema.jdbcimpl.DBElementsCollection1965110756">
+        <OBJECT CLASS="com.sun.forte4j.modules.dbmodel.jdbcimpl.DBElementsCollection" ID="org.netbeans.modules.dbschema.jdbcimpl.DBElementsCollection1513666855">
           <_elms>
             <OBJECT/>
           </_elms>
@@ -25,21 +25,21 @@
             </ARRAY>
           </_template>
           <owner>
-            <OBJECT REFERENCE="org.netbeans.modules.dbschema.jdbcimpl.SchemaElementImpl548711172"/>
+            <OBJECT REFERENCE="org.netbeans.modules.dbschema.jdbcimpl.SchemaElementImpl1079211"/>
           </owner>
         </OBJECT>
       </tables>
       <_schema>
-        <OBJECT CLASS="com.sun.forte4j.modules.dbmodel.DBIdentifier" ID="org.netbeans.modules.dbschema.DBIdentifier1956517149">
+        <OBJECT CLASS="com.sun.forte4j.modules.dbmodel.DBIdentifier" ID="org.netbeans.modules.dbschema.DBIdentifier958430101">
           <name>APD</name>
         </OBJECT>
       </_schema>
       <_catalog>
-        <OBJECT CLASS="com.sun.forte4j.modules.dbmodel.DBIdentifier" ID="org.netbeans.modules.dbschema.DBIdentifier914120379">
+        <OBJECT CLASS="com.sun.forte4j.modules.dbmodel.DBIdentifier" ID="org.netbeans.modules.dbschema.DBIdentifier59871360">
           <name></name>
         </OBJECT>
       </_catalog>
-      <_url>jdbc:derby://localhost:1527/APD</_url>
+      <_url>jdbc:derby://localhost:1527/Ecommerce</_url>
       <_driver>org.apache.derby.jdbc.ClientDriver</_driver>
       <_driverName>Apache Derby Network Client JDBC Driver</_driverName>
     </OBJECT>

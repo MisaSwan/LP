@@ -5,8 +5,10 @@
  */
 package entities.service;
 
+import entities.Product;
 import java.util.List;
 import javax.persistence.EntityManager;
+import org.eclipse.persistence.internal.jpa.JPAQuery;
 
 /**
  *
@@ -59,5 +61,11 @@ public abstract class AbstractFacade<T> {
         javax.persistence.Query q = getEntityManager().createQuery(cq);
         return ((Long) q.getSingleResult()).intValue();
     }
+
+/*    public List<T> findAll(String text) {        
+         javax.persistence.criteria.CriteriaQuery cq = getEntityManager().getCriteriaBuilder().createQuery();
+        cq.select(cq.from(entityClass));
+        return getEntityManager().createQuery(cq).getResultList();
+    }*/
     
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
@@ -66,7 +67,8 @@ public class ProductFacadeREST extends AbstractFacade<Product> {
     public List<Product> findAll() {
         return super.findAll();
     }
-
+    
+    
     @GET
     @Path("{from}/{to}")
     @Produces({"application/xml", "application/json"})
@@ -81,6 +83,20 @@ public class ProductFacadeREST extends AbstractFacade<Product> {
         return String.valueOf(super.count());
     }
 
+    @GET 
+    @Path("search/{text}") 
+    @Produces({"application/xml", "application/json"}) 
+    public List<Product> findByText(@PathParam("text") String text) {        
+        return (List<Product>) em.createNamedQuery("Product.findAllWithText").setParameter("name", "%"+text+"%").getResultList(); 
+    } 
+    
+        @GET 
+    @Path("search") 
+    @Produces({"application/xml", "application/json"}) 
+    public List<Product> findByBlankText() {        
+        return super.findAll();
+    } 
+    
     @Override
     protected EntityManager getEntityManager() {
         return em;

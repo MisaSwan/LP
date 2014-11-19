@@ -31,11 +31,12 @@ public class BuscarProdutoCommand implements Command {
     public void execute(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         List<String> ecommerces = new ArrayList();
-        ecommerces.add("http://localhost:8080/ECommerce/webresources/entities.product");
-        // ecommerces.add("http://localhost:8081/ECommerce/webresources/entities.product");
+        ecommerces.add("http://localhost:8080/Ecommerce/webresources/entities.product/search/");
+        // ecommerces.add("http://localhost:8081/Ecommerce/webresources/entities.product/search/");
         List<Product> productsAll = new ArrayList();
         for (String uri : ecommerces) {
-            URL url = new URL(uri);
+            String text = request.getParameter("textLike");
+            URL url = new URL(uri + text);
             HttpURLConnection connection = (HttpURLConnection) url.openConnection();
             connection.setRequestMethod("GET");
             connection.setRequestProperty("Accept", "application/xml");
@@ -48,8 +49,10 @@ public class BuscarProdutoCommand implements Command {
             } catch (JAXBException ex) {
                 Logger.getLogger(BuscarProdutoCommand.class.getName()).log(Level.SEVERE, null, ex);
             }
-            for (Product product : products.getProducts()) {
-                productsAll.add(product);
+            if (products.getProducts() != null) {
+                for (Product product : products.getProducts()) {
+                    productsAll.add(product);
+                }
             }
             connection.disconnect();
         }

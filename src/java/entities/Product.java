@@ -27,9 +27,9 @@ import javax.xml.bind.annotation.XmlRootElement;
 @Table(name = "PRODUTO")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p")
-  /*  @NamedQuery(name = "Product.findByProductId", query = "SELECT p FROM ECOMMERCE.PRODUTO p WHERE p.ID = :productId"),
-    @NamedQuery(name = "Product.findByName", query = "SELECT p FROM ECOMMERCE.PRODUTO p WHERE p.NOME = :name"),
+    @NamedQuery(name = "Product.findAll", query = "SELECT p FROM Product p"),
+    @NamedQuery(name = "Product.findAllWithText", query = "SELECT p FROM Product p WHERE p.name like :name")
+/*    @NamedQuery(name = "Product.findByName", query = "SELECT p FROM ECOMMERCE.PRODUTO p WHERE p.NOME = :name")
     @NamedQuery(name = "Product.findByAddressline1", query = "SELECT p FROM ECOMMERCE.PRODUTO p WHERE p.PRECO = :price"),
     @NamedQuery(name = "Product.findByAddressline2", query = "SELECT p FROM ECOMMERCE.PRODUTO p WHERE p.DESCRICAO = :description"),
     @NamedQuery(name = "Product.findByCity", query = "SELECT p FROM ECOMMERCE.PRODUTO p WHERE p.IMAGEM = :image"),

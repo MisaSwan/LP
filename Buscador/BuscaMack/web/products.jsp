@@ -48,19 +48,23 @@
                 <div id='welcome2' >
                     <%if (request.getSession().getAttribute("usuarioLogado") == null) {
                     %>       
-
+<br/>
+<br/>
                     <div class="alert alert-info" role="alert" style='width:50%;margin: 0px auto;'>Você ainda não está logado! Por favor você precisa estar logado para utilizar o BuscaMack, por favor faça <a href="#login" data-rel="popup" data-transition="flip" data-position-to="window" data-transition="pop" >Login</a> ou <a href="register.jsp">Registre-se</a>.</h3> </div>
                     <%} else {%>                                
                     <form  method="GET" id="searcProduct"  action="/BuscaMack/FrontController" data-ajax="false">
-                        <input type="search" value="" data-theme="a" placeholder="Buscar Produtos" >
+                        <input type="search" name="textLike" value="" data-theme="a" placeholder="Buscar Produtos" required>
                         <input type="hidden" name="action" value="searchProduct">                
                         <input type="submit" class="ui-btn " data-theme="a" value="Buscar"/>
 
                     </form>  
 
                     <ul data-role="listview" data-split-icon="custom" data-theme="a"  data-split-theme="b" data-inset="true" data-filter="true" data-input="#filterIndex">
-                        <%if (((List<Product>) request.getSession().getAttribute("products")) != null) {%>                       
-                        <%for (Product product : (List<Product>) request.getSession().getAttribute("products")) {%>
+                        <%if (((List<Product>) request.getSession().getAttribute("products")) != null) {                         
+                          if (((List<Product>) request.getSession().getAttribute("products")).size() ==0) {%>                          
+                        <div class="alert alert-warning" role="alert" style='width:50%;margin: 0px auto;'> Ops :( Sua pesquisa não encontrou nenhum produto correspondente, tente palavras-chave diferentes.</div>
+                        <%}                     
+                        for (Product product : (List<Product>) request.getSession().getAttribute("products")) {%>
                         <li><a href="#">                  
                                 <img src="<%=product.getImage()%>"class="img-thumbnail">  
                                 <h2><%=product.getName()%></h2>
@@ -68,8 +72,8 @@
                                 <span class="ui-li-aside hidden-xs"><strong>R$ <%=product.getPrice()%>0</strong></span></a>       
                             <a href="#purchase" id="pricetag" data-icon="custom" data-rel="popup" onclick="buyProduct(this);" data-position-to="window" data-transition="pop">Comprar</a>
                         </li>  
-                        <%}%>
-                        <%}%>
+                        <%}
+                        }%>
                     </ul> 
                     <%}
                     %>

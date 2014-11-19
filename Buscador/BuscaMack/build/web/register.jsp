@@ -13,13 +13,7 @@
         <link rel="stylesheet" href="assets/css/jquery.mobile-1.4.4.min.css" />
         <script src="assets/js/jquery-1.11.1.min.js"></script>
         <script src="assets/js/jquery.mobile-1.4.4.min.js"></script>
-        
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-
-        <!-- Optional theme -->
-        <link rel="stylesheet" href="assets/css/bootstrap-theme.min.css">
-
+                
         <!-- Latest compiled and minified JavaScript -->
         <script src="assets/js/bootstrap.min.js"></script>    
         <link rel="stylesheet" href="assets/css/style.css"/>
@@ -48,17 +42,16 @@
     <body >
         <div data-role="page" id="register" data-theme="b">
             <div data-role="header">
-                <div data-role="navbar" class="nav-glyphish-example" data-grid="c">
+                <div data-role="navbar" class="nav-glyphish-example" data-grid="b">
                     <ul>
                         <li><a href="index.jsp" data-transition="flip" id="house" data-icon="custom">Home</a></li>
-                        <li><a href="products.jsp" id="outlet" data-transition="flip" data-icon="custom">Produtos</a></li>
-                        <li><a href="partners.jsp" data-transition="flip" id="beer" data-icon="custom">Parceiros</a></li>        
+                        <li><a href="products.jsp" id="outlet" data-transition="flip" data-icon="custom">Produtos</a></li>                        
                         <li><a href="#login" data-rel="popup" data-transition="flip" data-position-to="window" data-transition="pop" id="person" data-icon="custom">Login</a></li>        
                     </ul>
                 </div>            
             </div>             
             <div data-role="main" class="ui-content">
-                <form method="GET" id="registerForm" action="/ECommerce/FrontController" name="registro" data-ajax="false" autocomplete="off" >
+                <form method="GET" id="registerForm" action="/BuscaMack/FrontController" name="registro" data-ajax="false" autocomplete="off" >
                     <div data-role="fieldcontain" >
                         <label>Nome:</label>
                         <input type="text" name="nameRegister" value="" placeholder="Nome" required="">
@@ -103,7 +96,7 @@
                 </form>
             </div>
             <div data-role="footer" data-position="fixed" data-fullscreen="true">
-                <h1>E-Mack</h1>
+                <h1>BuscaMack</h1>
             </div>           
             <div data-role="popup" id="popupWrongPassword">
                 <p>As senhas não conferem, digite novamente.</p>
