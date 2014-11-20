@@ -8,7 +8,6 @@ package entities.service;
 import entities.Product;
 import java.util.List;
 import javax.persistence.EntityManager;
-import org.eclipse.persistence.internal.jpa.JPAQuery;
 
 /**
  *

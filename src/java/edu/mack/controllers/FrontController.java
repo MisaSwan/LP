@@ -5,7 +5,9 @@
  */
 package edu.mack.controllers;
 
+import edu.mack.model.BuscarProdutoCommand;
 import edu.mack.model.CarregarProdutoCommand;
+import edu.mack.model.CarregarProdutoCommand_1;
 import edu.mack.model.Command;
 import edu.mack.model.SalvarProdutoCommand;
 import java.io.IOException;
@@ -22,8 +24,9 @@ import javax.servlet.http.HttpServletResponse;
 public class FrontController extends HttpServlet {
 
     /**
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
-     * methods.
+     * Processes requests for both HTTP
+     * <code>GET</code> and
+     * <code>POST</code> methods.
      *
      * @param request servlet request
      * @param response servlet response
@@ -32,28 +35,38 @@ public class FrontController extends HttpServlet {
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+ 
         Command cmd;
-
+        System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@");
         String action = request.getParameter("action");
         switch (action) {
             case "saveProduct":
-             cmd = new SalvarProdutoCommand();
-                break;            
+                cmd = new SalvarProdutoCommand();
+                break;
+//            case "loadProduct":
+//                cmd = new CarregarProdutoCommand();
+//                break;
+            case "searchProduct":
+                cmd = new BuscarProdutoCommand();
+                break;
             case "loadProduct":
-                cmd = new CarregarProdutoCommand();
+                cmd = new CarregarProdutoCommand_1();
                 break;
             default:
                 cmd = null;
                 break;
         }
-        if(cmd!=null)
+        if (cmd != null) {
             cmd.execute(request, response);
         }
+       
+           
+    }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
-     * Handles the HTTP <code>GET</code> method.
+     * Handles the HTTP
+     * <code>GET</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -67,7 +80,8 @@ public class FrontController extends HttpServlet {
     }
 
     /**
-     * Handles the HTTP <code>POST</code> method.
+     * Handles the HTTP
+     * <code>POST</code> method.
      *
      * @param request servlet request
      * @param response servlet response
@@ -89,5 +103,4 @@ public class FrontController extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
 }
